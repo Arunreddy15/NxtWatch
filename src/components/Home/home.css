@@ -1,0 +1,330 @@
+* {
+  box-sizing: border-box;
+}
+.side-bar-dark {
+  background-color: #212121;
+}
+.side-bar {
+  height: 90vh;
+  width: 17vw;
+  left: fixed;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px 20px;
+
+  justify-content: space-between;
+}
+.home-container {
+  display: flex;
+  min-height: 90vh;
+}
+
+.navigators-container {
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.navigator-item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.nav-link {
+  text-decoration: none;
+  color: #313131;
+  font-weight: 600;
+}
+.nav-link-dark {
+  color: #f1f5f9;
+  font-weight: 600;
+  text-decoration: none;
+}
+.icons {
+  margin-right: 20px;
+  color: #313131;
+}
+.icons-dark {
+  margin-right: 20px;
+  color: #f1f5f9;
+}
+.logos-list {
+  display: flex;
+  align-items: center;
+}
+.icons-button {
+  background-color: transparent;
+  border: 0;
+  padding-left: 0;
+  padding-right: 10px;
+}
+.social-icons {
+  height: 30px;
+}
+.contact-us {
+  font-weight: 500;
+}
+.contact-us-dark {
+  color: white;
+  font-weight: 500;
+}
+.description {
+  font-weight: 500;
+}
+.description-dark {
+  color: white;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 552px) {
+  .home-content {
+    width: 100vw;
+  }
+  .ads-banner-show {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+    background-size: cover;
+    /* width: 100%; */
+    height: 180px;
+    padding: 0;
+  }
+  .banner-text-content {
+    padding: 30px 0 0 20px;
+    width: 90%;
+  }
+  .banner-text {
+    font-family: 'Roboto';
+    color: #475569;
+  }
+  .logo-banner {
+    height: 25px;
+  }
+  .gift-now-button {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: transparent;
+  }
+  .banner-close-button {
+    background-color: transparent;
+    border: 0;
+    float: right;
+    margin-right: 10px;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-input {
+    height: 26px;
+    outline: none;
+    font-size: 14px;
+    padding-left: 5px;
+    width: 50%;
+    margin-right: 5px;
+    border-radius: 4px;
+    border: 1px solid #b3b2b2;
+  }
+
+  .container-items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .failure-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 600px;
+  }
+  .failure-view-text-heading {
+    font-size: 18px;
+    color: #1e293b;
+  }
+  .failure-view-text {
+    font-family: 'Roboto';
+    margin: 0 0 10px 0;
+    color: #475569;
+    font-size: 14px;
+  }
+  .side-bar {
+    display: none;
+  }
+
+  .failure-image {
+    height: 200px;
+  }
+  .videos-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+  }
+  .no-video-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+  }
+  .no-video-image {
+    height: 180px;
+  }
+  .no-search-results-description {
+    font-size: 14px;
+    font-family: 'Roboto';
+    color: #475569;
+  }
+  .no-search-results-heading {
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #1e293b;
+    font-family: 'Roboto';
+  }
+}
+@media screen and (min-width: 552px) {
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    width: 85vw;
+  }
+  .ads-banner-show {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+    background-size: cover;
+    /* width: 100%; */
+    height: 250px;
+    padding: 0;
+  }
+  .banner-text-content {
+    padding: 30px 0 0 20px;
+  }
+  .banner-text {
+    font-family: 'Roboto';
+    color: #475569;
+    font-size: 18px;
+  }
+  .banner-close-button {
+    background-color: transparent;
+    border: 0;
+    float: right;
+    margin-right: 20px;
+  }
+  .ads-banner-hide {
+    display: none;
+  }
+  .logo-banner {
+    height: 35px;
+  }
+  .gift-now-button {
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: transparent;
+  }
+  .home-content-body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    padding: 20px;
+  }
+  .home-content-body-dark {
+    display: flex;
+    flex-direction: column;
+    background-color: #181818;
+    padding: 20px;
+  }
+  .home-content-bg-dark {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    width: 85vw;
+
+    background-color: #181818;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  .search-input {
+    height: 30px;
+    outline: none;
+    font-size: 16px;
+    padding-left: 5px;
+    width: 30%;
+    margin-right: 5px;
+    border-radius: 4px;
+    border: 1px solid #b3b2b2;
+  }
+  .container-items {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .failure-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  .failure-view-text-heading {
+    font-size: 26px;
+    font-family: 'Roboto';
+    color: #1e293b;
+  }
+  .failure-view-text {
+    font-family: 'Roboto';
+    margin: 0 0 15px 0;
+    color: #475569;
+    font-size: 18px;
+  }
+  .failure-image {
+    height: 300px;
+  }
+  .videos-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+  }
+  .no-video-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+  }
+  .no-video-image {
+    height: 280px;
+  }
+  .no-search-results-description {
+    font-size: 18px;
+    font-family: 'Roboto';
+    color: #475569;
+  }
+  .no-search-results-heading {
+    font-size: 26px;
+    margin-bottom: 0;
+    color: #1e293b;
+    font-family: 'Roboto';
+  }
+}
+.retry-button {
+  background-color: #4f46e5;
+  border: 0;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.searchBtn {
+  background-color: transparent;
+  border: 0;
+}

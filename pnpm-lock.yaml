@@ -10,6 +10,7 @@ dependencies:
   history: 5.0.1
   jest-styled-components: 7.0.5_styled-components@5.3.0
   js-cookie: 3.0.0
+  moment: 2.29.1
   msw: 0.34.0
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
@@ -8973,6 +8974,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+  /moment/2.29.1:
+    dev: false
+    resolution:
+      integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
   /moniker/0.1.2:
     dev: false
     resolution:
@@ -13989,6 +13994,7 @@ specifiers:
   jest-styled-components: 7.0.5
   js-cookie: 3.0.0
   lint-staged: 10.5.4
+  moment: 2.29.1
   msw: 0.34.0
   npm-run-all: 4.1.5
   prettier: 2.2.1

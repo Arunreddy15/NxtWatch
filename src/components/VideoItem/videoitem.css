@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+.nav-link-Item {
+  text-decoration: none;
+}
+.item-container {
+  list-style: none;
+  width: 300px;
+  height: 350px;
+  margin: 10px 5px;
+}
+.channel-profile {
+  height: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 552px) {
+  .item-container {
+    list-style: none;
+    height: 350px;
+    margin-bottom: 10px;
+  }
+  .thumbnail-image {
+    height: 180px;
+  }
+}
+.thumbnail-image {
+  width: 300px;
+  height: 170px;
+}
+.details-channel-container {
+  margin-top: 5px;
+  display: flex;
+}
+.views-published-year {
+  display: flex;
+  align-items: center;
+}
+.video-title {
+  margin-top: 0;
+  color: black;
+
+  font-size: 16px;
+}
+.video-title-dark {
+  color: white;
+}
+.channel-name {
+  margin: 5px 0;
+  color: #475569;
+  font-weight: 400;
+}
+.dot-icon {
+  margin: 0 5px;
+  color: #475569;
+}
+.views-count {
+  color: #475569;
+}
+.published-year {
+  color: #475569;
+}
