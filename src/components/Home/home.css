@@ -6,7 +6,7 @@
 }
 .side-bar {
   height: 90vh;
-  width: 17vw;
+  width: 15vw;
   left: fixed;
   display: flex;
   flex-direction: column;
@@ -103,6 +103,9 @@
     font-size: 12px;
     background-color: transparent;
   }
+  .ads-banner-hide {
+    display: none;
+  }
   .banner-close-button {
     background-color: transparent;
     border: 0;
@@ -183,6 +186,14 @@
     margin-bottom: 0;
     color: #1e293b;
     font-family: 'Roboto';
+  }
+  .failure-view-text-heading-dark {
+    color: white;
+    font-size: 16px;
+  }
+  .no-search-results-heading-dark {
+    color: white;
+    font-size: 16px;
   }
 }
 @media screen and (min-width: 552px) {
@@ -270,6 +281,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    height: 600px;
   }
   .failure-view-text-heading {
     font-size: 26px;
@@ -311,6 +323,12 @@
     margin-bottom: 0;
     color: #1e293b;
     font-family: 'Roboto';
+  }
+  .failure-view-text-heading-dark {
+    color: white;
+  }
+  .no-search-results-heading-dark {
+    color: white;
   }
 }
 .retry-button {

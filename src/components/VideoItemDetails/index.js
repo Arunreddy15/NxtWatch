@@ -74,12 +74,15 @@ class VideoItemDetails extends Component {
     const fetchedData = await response.json()
     console.log(fetchedData)
     if (response.ok === true) {
-      this.setState({apiStatus: apiStatusConstants.success})
       const SimilarVideos = fetchedData.similar_videos.map(each =>
         this.formattedSimilarData(each),
       )
       const videoDetails = this.formattedVideos(fetchedData.video_details)
-      this.setState({videoItemData: videoDetails, similarVideos: SimilarVideos})
+      this.setState({
+        videoItemData: videoDetails,
+        similarVideos: SimilarVideos,
+        apiStatus: apiStatusConstants.success,
+      })
     } else {
       this.setState({apiStatus: apiStatusConstants.failure})
     }

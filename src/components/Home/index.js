@@ -90,12 +90,12 @@ class Home extends Component {
   }
 
   renderInprogress = () => (
-    <div className="videos-loader-container">
+    <div className="videos-loader-container" testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
 
-  renderSuccess = () => {
+  renderSuccess = isLight => {
     const {videosData} = this.state
 
     const isSearchNotFound = videosData.length === 0
@@ -106,7 +106,15 @@ class Home extends Component {
           alt="no video"
           className="no-video-image"
         />
-        <h1 className="no-search-results-heading">No Search Results Found</h1>
+        <h1
+          className={
+            isLight
+              ? 'no-search-results-heading'
+              : 'no-search-results-heading no-search-results-heading-dark'
+          }
+        >
+          No Search Results Found
+        </h1>
         <p className="no-search-results-description">
           Try different key words or remove search filter
         </p>
@@ -127,14 +135,22 @@ class Home extends Component {
     )
   }
 
-  renderFailure = () => (
+  renderFailure = isLight => (
     <div className="failure-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
         alt="failure"
         className="failure-image"
       />
-      <h1 className="failure-view-text-heading">Oops! Something Went Wrong</h1>
+      <h1
+        className={
+          isLight
+            ? 'failure-view-text-heading'
+            : 'failure-view-text-heading failure-view-text-heading-dark'
+        }
+      >
+        Oops! Something Went Wrong
+      </h1>
       <p className="failure-view-text">
         We are having some trouble to complete your request.
       </p>
@@ -149,12 +165,12 @@ class Home extends Component {
     </div>
   )
 
-  renderResponseData = () => {
+  renderResponseData = isLight => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusConstants.failure:
-        return this.renderFailure()
+        return this.renderFailure(isLight)
       case apiStatusConstants.success:
         return this.renderSuccess()
       case apiStatusConstants.in_progress:

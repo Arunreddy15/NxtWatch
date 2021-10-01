@@ -22,26 +22,37 @@ const SideBar = () => (
                 <p className={isLight ? 'nav-link' : 'nav-link-dark'}>Home</p>
               </li>
             </Link>
-            <li className="navigator-item">
-              <HiFire size={23} className={isLight ? 'icons' : 'icons-dark'} />
-              <p className={isLight ? 'nav-link' : 'nav-link-dark'}>Trending</p>
-            </li>
-            <li className="navigator-item">
-              <SiYoutubegaming
-                size={23}
-                className={isLight ? 'icons' : 'icons-dark'}
-              />
-              <p className={isLight ? 'nav-link' : 'nav-link-dark'}>Gaming</p>
-            </li>
-            <li className="navigator-item">
-              <MdPlaylistAdd
-                size={23}
-                className={isLight ? 'icons' : 'icons-dark'}
-              />
-              <p className={isLight ? 'nav-link' : 'nav-link-dark'}>
-                Saved Videos
-              </p>
-            </li>
+            <Link to="/trending" className="nav-links">
+              <li className="navigator-item">
+                <HiFire
+                  size={23}
+                  className={isLight ? 'icons' : 'icons-dark'}
+                />
+                <p className={isLight ? 'nav-link' : 'nav-link-dark'}>
+                  Trending
+                </p>
+              </li>
+            </Link>
+            <Link to="/gaming" className="nav-links">
+              <li className="navigator-item">
+                <SiYoutubegaming
+                  size={23}
+                  className={isLight ? 'icons' : 'icons-dark'}
+                />
+                <p className={isLight ? 'nav-link' : 'nav-link-dark'}>Gaming</p>
+              </li>
+            </Link>
+            <Link to="/savedvideos" className="nav-links">
+              <li className="navigator-item">
+                <MdPlaylistAdd
+                  size={29}
+                  className={isLight ? 'icons' : 'icons-dark'}
+                />
+                <p className={isLight ? 'nav-link' : 'nav-link-dark'}>
+                  Saved Videos
+                </p>
+              </li>
+            </Link>
           </ul>
           <div>
             <p className={isLight ? 'contact-us' : 'contact-us-dark'}>
