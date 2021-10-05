@@ -1,60 +1,199 @@
-.video-item-page {
-  display: flex;
-  min-height: 90vh;
+@media screen and (min-width: 552px) {
+  .video-item-page {
+    display: flex;
+    min-height: 90vh;
+  }
+  .video-item-page-dark {
+    background-color: #181818;
+  }
+  .videos-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .video-item-body {
+    padding: 20px;
+    background-color: #f1f1f1;
+    width: 85vw;
+  }
+  .video-item-body-dark {
+    background-color: transparent;
+  }
+  .video-container {
+    margin-bottom: 20px;
+  }
+  .video-title {
+    font-family: 'Roboto';
+    font-size: 18px;
+  }
+  .video-title-dark {
+    color: white;
+  }
+  .views-pub-like-dislike-container {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    justify-content: space-between;
+    font-family: 'Roboto';
+    color: #475569;
+  }
+  .views-pub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+  }
+  .like-dislike-save {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+  }
+  .metrics {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    color: #475569;
+    font-family: 'Roboto';
+    font-size: 16px;
+  }
+  .metrics-liked {
+    color: #3b82f6;
+  }
+  .metrics-disliked {
+    color: #3b82f6;
+  }
+  .metrics-saved {
+    color: #3b82f6;
+  }
+  .like,
+  .dislike,
+  .save {
+    margin-right: 10px;
+  }
+  .channel-info {
+    display: flex;
+    font-family: 'Roboto';
+  }
+  .channel-profile {
+    margin: 10px;
+  }
+  .channel-name-vi {
+    color: #181818;
+    font-size: 20px;
+    margin-top: 7px;
+  }
+  .channel-name-vi-dark {
+    color: white;
+  }
+  .channel-subs-vi {
+    color: #475569;
+    font-size: 16px;
+  }
+  .channel-description-vi {
+    color: #64748b;
+    font-size: 16px;
+  }
 }
-.video-item-page-dark {
-  background-color: #181818;
-}
-.videos-loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.video-item-body {
-  padding: 20px;
-  background-color: #f1f1f1;
-  width: 85vw;
-}
-.video-item-body-dark {
-  background-color: transparent;
-}
-.video-container {
-  margin-bottom: 20px;
-}
-.video-title {
-  font-family: 'Roboto';
-  font-size: 18px;
-}
-.video-title-dark {
-  color: white;
-}
-.views-pub-like-dislike-container {
-  display: flex;
-  align-items: center;
-  width: 95%;
-  justify-content: space-between;
-  font-family: 'Roboto';
-  color: #475569;
-}
-.views-pub {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 200px;
-}
-.like-dislike-save {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 280px;
-}
-.metrics {
-  display: flex;
-  align-items: center;
-}
-.like,
-.dislike,
-.save {
-  margin-right: 10px;
+@media screen and (max-width: 552px) {
+  .video-item-page {
+    display: flex;
+    min-height: 90vh;
+  }
+  .video-item-page-dark {
+    background-color: #181818;
+  }
+  .videos-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .video-item-body {
+    padding: 20px;
+    background-color: #f1f1f1;
+    width: 100vw;
+  }
+  .video-item-body-dark {
+    background-color: transparent;
+  }
+  .video-container {
+    margin-bottom: 20px;
+  }
+  .video-title {
+    font-family: 'Roboto';
+    font-size: 16px;
+  }
+  .video-title-dark {
+    color: white;
+  }
+  .views-pub-like-dislike-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    font-family: 'Roboto';
+    color: #475569;
+  }
+  .views-pub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+  }
+  .like-dislike-save {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+  }
+  .metrics {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    color: #475569;
+    font-family: 'Roboto';
+    font-size: 14px;
+  }
+  .metrics-liked {
+    color: #3b82f6;
+  }
+  .metrics-disliked {
+    color: #3b82f6;
+  }
+  .metrics-saved {
+    color: #3b82f6;
+  }
+  .like,
+  .dislike,
+  .save {
+    margin-right: 6px;
+  }
+  .channel-info {
+    display: flex;
+    font-family: 'Roboto';
+  }
+  .channel-profile {
+    margin: 5px;
+    height: 30px;
+  }
+  .channel-name-vi {
+    color: #181818;
+    font-size: 16px;
+    margin-top: 7px;
+  }
+  .channel-name-vi-dark {
+    color: white;
+  }
+  .channel-subs-vi {
+    color: #475569;
+    font-size: 14px;
+  }
+  .channel-description-vi {
+    color: #64748b;
+    font-size: 14px;
+  }
 }

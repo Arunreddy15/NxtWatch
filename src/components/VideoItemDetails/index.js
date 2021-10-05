@@ -26,6 +26,9 @@ class VideoItemDetails extends Component {
     videoItemData: {},
     similarVideos: [],
     apiStatus: apiStatusConstants.initial,
+    isDisliked: false,
+    isLiked: false,
+    isSaved: false,
   }
 
   componentDidMount() {
@@ -49,6 +52,7 @@ class VideoItemDetails extends Component {
     channel: {
       name: videoData.channel.name,
       profileImageUrl: videoData.channel.profile_image_url,
+      subscriberCount: videoData.channel.subscriber_count,
     },
     id: videoData.id,
     publishedAt: videoData.published_at,
@@ -94,74 +98,97 @@ class VideoItemDetails extends Component {
     </div>
   )
 
-  renderVideoContainer = isLight => {
-    const {videoItemData} = this.state
-    const {
-      videoUrl,
-      viewCount,
-      channel,
-      publishedAt,
-      description,
-      title,
-    } = videoItemData
-    console.log(channel.name)
-    // const {name, profileImageUrl} = channel
-    const date = Moment(publishedAt).format('YYYY')
+  //   renderVideoContainer = isLight => {
+  //     const {videoItemData, isDisliked, isLiked, isSaved} = this.state
+  //     const {
+  //       videoUrl,
+  //       viewCount,
+  //       channel,
+  //       publishedAt,
+  //       description,
+  //       title,
+  //     } = videoItemData
+  //     console.log(videoItemData)
+  //     // const {name, profileImageUrl} = channel
+  //     const date = Moment(publishedAt).format('YYYY')
 
-    return (
-      <div>
-        <div className="video-container">
-          <ReactPlayer url={videoUrl} width={1250} height={550} controls />
-        </div>
-        <div className="video-details">
-          <p
-            className={isLight ? 'video-title' : 'video-title video-title-dark'}
-          >
-            {title}
-          </p>
-          <div className="views-pub-like-dislike-container">
-            <div className="views-pub">
-              <p>{viewCount} views</p>
-              <BsDot />
-              <p>{presentYear - date} years ago</p>
-            </div>
-            <div className="like-dislike-save">
-              <div className="metrics">
-                <BiLike size={26} className="like" />
-                Like
-              </div>
-              <div className="metrics">
-                <BiDislike
-                  size={26}
-                  className={isLight ? 'dislike' : 'dislike dislike-dark'}
-                />
-                Dislike
-              </div>
-              <div className="metrics">
-                <MdPlaylistAdd
-                  size={26}
-                  className={isLight ? 'save' : 'save save-dark'}
-                />
-                Save
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
-        {/* <div>
-          <img
-            src={profileImageUrl}
-            alt="channel"
-            className="channel-profile"
-          />
-          <div>
-            <p>{channel.name}</p>
-            <p>{channel.description}</p>
-          </div>
-        </div> */}
-      </div>
-    )
-  }
+  //     return (
+  //       <div>
+  //         <div className="video-container">
+  //           <ReactPlayer url={videoUrl} width={1250} height={550} controls />
+  //         </div>
+  //         <div className="video-details">
+  //           <p
+  //             className={isLight ? 'video-title' : 'video-title video-title-dark'}
+  //           >
+  //             {title}
+  //           </p>
+  //           <div className="views-pub-like-dislike-container">
+  //             <div className="views-pub">
+  //               <p>{viewCount} views</p>
+  //               <BsDot />
+  //               <p>{presentYear - date} years ago</p>
+  //             </div>
+  //             <div className="like-dislike-save">
+  //               <button
+  //                 type="button"
+  //                 className={isLiked ? 'metrics metrics-liked' : 'metrics'}
+  //                 onClick={this.onLike}
+  //               >
+  //                 <BiLike size={26} className="like" />
+  //                 Like
+  //               </button>
+  //               <button
+  //                 type="button"
+  //                 className={isDisliked ? 'metrics metrics-disliked' : 'metrics'}
+  //                 onClick={this.onDislike}
+  //               >
+  //                 <BiDislike
+  //                   size={26}
+  //                   className={isLight ? 'dislike' : 'dislike dislike-dark'}
+  //                 />
+  //                 Dislike
+  //               </button>
+  //               <button
+  //                 type="button"
+  //                 className={isSaved ? 'metrics metrics-saved' : 'metrics'}
+  //                 onClick={this.onSaved}
+  //               >
+  //                 <MdPlaylistAdd
+  //                   size={26}
+  //                   className={isLight ? 'save' : 'save save-dark'}
+  //                 />
+  //                 Save
+  //               </button>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <hr />
+  //         <div className="channel-info">
+  //           <img
+  //             src={channel.profileImageUrl}
+  //             alt="channel"
+  //             className="channel-profile"
+  //           />
+  //           <div>
+  //             <p
+  //               className={
+  //                 isLight
+  //                   ? 'channel-name-vi'
+  //                   : 'channel-name-vi channel-name-vi-dark'
+  //               }
+  //             >
+  //               {channel.name}
+  //             </p>
+  //             <p className="channel-subs-vi">
+  //               {channel.subscriberCount} subscribers
+  //             </p>
+  //             <p className="channel-description-vi">{description}</p>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )
+  //   }
 
   renderSimilarVideosContainer = () => {}
 
@@ -209,11 +236,36 @@ class VideoItemDetails extends Component {
     }
   }
 
+  onLike = () => {
+    this.setState(prevState => ({isLiked: !prevState.isLiked}))
+  }
+
+  onDislike = () => {
+    this.setState(prevState => ({isDisliked: !prevState.isDisliked}))
+  }
+
+  onSaved = () => {
+    // onSaveVideos()
+    this.setState(prevState => ({isSaved: !prevState.isSaved}))
+  }
+
   render() {
     return (
       <Context.Consumer>
         {value => {
           const {isLight} = value
+          const {videoItemData, isDisliked, isLiked, isSaved} = this.state
+          const {
+            videoUrl,
+            viewCount,
+            channel,
+            publishedAt,
+            description,
+            title,
+          } = videoItemData
+          console.log(videoItemData.channel)
+          const date = Moment(publishedAt).format('YYYY')
+
           return (
             <>
               <Header />
@@ -232,7 +284,100 @@ class VideoItemDetails extends Component {
                       : 'video-item-body video-item-body-dark'
                   }
                 >
-                  {this.renderResponseVideoData(isLight)}
+                  <div>
+                    <div className="video-container">
+                      <ReactPlayer
+                        url={videoUrl}
+                        width={1250}
+                        height={550}
+                        controls
+                      />
+                    </div>
+                    <div className="video-details">
+                      <p
+                        className={
+                          isLight
+                            ? 'video-title'
+                            : 'video-title video-title-dark'
+                        }
+                      >
+                        {title}
+                      </p>
+                      <div className="views-pub-like-dislike-container">
+                        <div className="views-pub">
+                          <p>{viewCount} views</p>
+                          <BsDot />
+                          <p>{presentYear - date} years ago</p>
+                        </div>
+                        <div className="like-dislike-save">
+                          <button
+                            type="button"
+                            className={
+                              isLiked ? 'metrics metrics-liked' : 'metrics'
+                            }
+                            onClick={this.onLike}
+                          >
+                            <BiLike size={26} className="like" />
+                            Like
+                          </button>
+                          <button
+                            type="button"
+                            className={
+                              isDisliked
+                                ? 'metrics metrics-disliked'
+                                : 'metrics'
+                            }
+                            onClick={this.onDislike}
+                          >
+                            <BiDislike
+                              size={26}
+                              className={
+                                isLight ? 'dislike' : 'dislike dislike-dark'
+                              }
+                            />
+                            Dislike
+                          </button>
+                          <button
+                            type="button"
+                            className={
+                              isSaved ? 'metrics metrics-saved' : 'metrics'
+                            }
+                            onClick={this.onSaved}
+                          >
+                            <MdPlaylistAdd
+                              size={26}
+                              className={isLight ? 'save' : 'save save-dark'}
+                            />
+                            Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                    <div className="channel-info">
+                      <img
+                        src={channel.profileImageUrl}
+                        alt="channel"
+                        className="channel-profile"
+                      />
+                      <div>
+                        <p
+                          className={
+                            isLight
+                              ? 'channel-name-vi'
+                              : 'channel-name-vi channel-name-vi-dark'
+                          }
+                        >
+                          {channel.name}
+                        </p>
+                        <p className="channel-subs-vi">
+                          {channel.subscriberCount} subscribers
+                        </p>
+                        <p className="channel-description-vi">{description}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* {this.renderResponseVideoData(isLight, onSaveVideos)} */}
                 </div>
               </div>
             </>
