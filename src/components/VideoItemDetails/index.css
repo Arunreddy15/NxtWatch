@@ -96,6 +96,9 @@
     color: #64748b;
     font-size: 16px;
   }
+  .video-container-mobile {
+    display: none;
+  }
 }
 @media screen and (max-width: 552px) {
   .video-item-page {
@@ -111,8 +114,10 @@
     align-items: center;
     width: 100%;
   }
+  .video-container {
+    display: none;
+  }
   .video-item-body {
-    padding: 20px;
     background-color: #f1f1f1;
     width: 100vw;
   }
@@ -121,6 +126,12 @@
   }
   .video-container {
     margin-bottom: 20px;
+  }
+  .video-details {
+    padding: 20px;
+  }
+  hr {
+    width: 90%;
   }
   .video-title {
     font-family: 'Roboto';
@@ -131,7 +142,8 @@
   }
   .views-pub-like-dislike-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
     width: 100%;
     justify-content: space-between;
     font-family: 'Roboto';
@@ -170,7 +182,7 @@
   .like,
   .dislike,
   .save {
-    margin-right: 6px;
+    margin-right: 4px;
   }
   .channel-info {
     display: flex;

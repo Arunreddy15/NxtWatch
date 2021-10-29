@@ -32,9 +32,10 @@ const Header = props => (
       return (
         <nav className={navbarBgColor}>
           <div className="header-container">
-            <div>
+            <Link to="/" className="nav-links">
               <img src={logoImgUrl} alt="app-logo" className="navbar-logo" />
-            </div>
+            </Link>
+
             <div className="theme-user-logout-container">
               {isLight ? (
                 <FaMoon

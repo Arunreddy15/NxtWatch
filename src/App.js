@@ -12,16 +12,30 @@ import Context from './context/Context'
 
 // Replace your code here
 class App extends Component {
-  state = {isLight: true}
+  state = {isLight: true, savedVideos: []}
 
   changeAppMode = () => {
     this.setState(prevState => ({isLight: !prevState.isLight}))
   }
 
+  onSaveVideos = videoItemData => {
+    const {savedVideos} = this.state
+
+    const updatedSavedVideos = [...savedVideos, videoItemData]
+    this.setState({savedVideos: updatedSavedVideos})
+  }
+
   render() {
-    const {isLight} = this.state
+    const {isLight, savedVideos} = this.state
     return (
-      <Context.Provider value={{isLight, changeAppMode: this.changeAppMode}}>
+      <Context.Provider
+        value={{
+          isLight,
+          changeAppMode: this.changeAppMode,
+          onSaveVideos: this.onSaveVideos,
+          savedVideos,
+        }}
+      >
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />

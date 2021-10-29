@@ -57,7 +57,7 @@ class Home extends Component {
   //   formattedData = each => (channel: each.channel)
 
   getData = async () => {
-    const {videosData, searchInput} = this.state
+    const {searchInput} = this.state
     this.setState({apiStatus: apiStatusConstants.in_progress})
     const api = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const options = {
@@ -67,9 +67,7 @@ class Home extends Component {
     }
     const response = await fetch(api, options)
     const data = await response.json()
-    // console.log(data.videos[1])
     if (response.ok === true) {
-      console.log('success')
       this.setState({apiStatus: apiStatusConstants.success})
       const fetchedData = data.videos.map(each => ({
         channel: {
@@ -82,9 +80,12 @@ class Home extends Component {
         thumbnailUrl: each.thumbnail_url,
         viewCount: each.view_count,
       }))
-      console.log(typeof videosData)
-      this.setState({videosData: fetchedData})
-    } else {
+
+      this.setState({
+        videosData: fetchedData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else if (response.status === 401) {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
@@ -235,7 +236,11 @@ class Home extends Component {
                         value={searchInput}
                         type="search"
                         placeholder="Search"
-                        className="search-input"
+                        className={
+                          isLight
+                            ? 'search-input'
+                            : 'search-input search-input-dark'
+                        }
                         onChange={this.onChangeSearch}
                       />
                       <button

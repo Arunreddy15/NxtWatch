@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import ReactPlayer from 'react-player'
-import Moment from 'moment'
+// import {formatDistanceStrict, toDate} from 'date-fns'
 import {BiLike, BiDislike} from 'react-icons/bi'
 import {MdPlaylistAdd} from 'react-icons/md'
 import {BsDot} from 'react-icons/bs'
@@ -20,11 +20,11 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   in_progress: 'IN_PROGRESS',
 }
-const presentYear = new Date().getFullYear()
+
 class VideoItemDetails extends Component {
   state = {
     videoItemData: {},
-    similarVideos: [],
+    // similarVideos: [],
     apiStatus: apiStatusConstants.initial,
     isDisliked: false,
     isLiked: false,
@@ -35,18 +35,18 @@ class VideoItemDetails extends Component {
     this.getVideoItemData()
   }
 
-  formattedSimilarData = each => ({
-    channel: {
-      name: each.channel.name,
-      profileImageUrl: each.channel.profile_image_url,
-    },
-    id: each.id,
-    title: each.title,
-    publishedAt: each.published_at,
-    videoUrl: each.video_url,
-    viewCount: each.view_count,
-    thumbnailUrl: each.thumbnail_url,
-  })
+  //   formattedSimilarData = each => ({
+  //     channel: {
+  //       name: each.channel.name,
+  //       profileImageUrl: each.channel.profile_image_url,
+  //     },
+  //     id: each.id,
+  //     title: each.title,
+  //     publishedAt: each.published_at,
+  //     videoUrl: each.video_url,
+  //     viewCount: each.view_count,
+  //     thumbnailUrl: each.thumbnail_url,
+  //   })
 
   formattedVideos = videoData => ({
     channel: {
@@ -78,15 +78,17 @@ class VideoItemDetails extends Component {
     const fetchedData = await response.json()
     console.log(fetchedData)
     if (response.ok === true) {
-      const SimilarVideos = fetchedData.similar_videos.map(each =>
-        this.formattedSimilarData(each),
-      )
+      //   const SimilarVideos = fetchedData.similar_videos.map(each =>
+      //     this.formattedSimilarData(each),
+      //   )
       const videoDetails = this.formattedVideos(fetchedData.video_details)
       this.setState({
         videoItemData: videoDetails,
-        similarVideos: SimilarVideos,
+        // similarVideos: SimilarVideos,
         apiStatus: apiStatusConstants.success,
       })
+
+      //   console.log(videoDetails.channel.name)
     } else {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
@@ -244,27 +246,32 @@ class VideoItemDetails extends Component {
     this.setState(prevState => ({isDisliked: !prevState.isDisliked}))
   }
 
-  onSaved = () => {
-    // onSaveVideos()
-    this.setState(prevState => ({isSaved: !prevState.isSaved}))
-  }
-
   render() {
     return (
       <Context.Consumer>
         {value => {
-          const {isLight} = value
+          const {isLight, onSaveVideos, savedVideos} = value
           const {videoItemData, isDisliked, isLiked, isSaved} = this.state
           const {
             videoUrl,
             viewCount,
-            channel,
             publishedAt,
             description,
             title,
           } = videoItemData
-          console.log(videoItemData.channel)
-          const date = Moment(publishedAt).format('YYYY')
+
+          // why I am not able to get channel data even its present in state by const{name,profileImageUrl,subscriberCount}=channel
+          const onSaved = () => {
+            onSaveVideos(videoItemData)
+
+            const filter = savedVideos.filter(
+              each => each.id === videoItemData.id,
+            )
+          }
+
+          const isSavedItem = savedVideos.filter(
+            each => each.id === videoItemData.id,
+          )
 
           return (
             <>
@@ -293,6 +300,14 @@ class VideoItemDetails extends Component {
                         controls
                       />
                     </div>
+                    <div className="video-container-mobile">
+                      <ReactPlayer
+                        url={videoUrl}
+                        width={420}
+                        height={220}
+                        controls
+                      />
+                    </div>
                     <div className="video-details">
                       <p
                         className={
@@ -307,7 +322,15 @@ class VideoItemDetails extends Component {
                         <div className="views-pub">
                           <p>{viewCount} views</p>
                           <BsDot />
-                          <p>{presentYear - date} years ago</p>
+                          {/* <p>
+                            {formatDistanceStrict(
+                              new Date(publishedAt),
+                              new Date(),
+                              {
+                                addSuffix: true,
+                              },
+                            )}
+                          </p> */}
                         </div>
                         <div className="like-dislike-save">
                           <button
@@ -342,13 +365,13 @@ class VideoItemDetails extends Component {
                             className={
                               isSaved ? 'metrics metrics-saved' : 'metrics'
                             }
-                            onClick={this.onSaved}
+                            onClick={onSaved}
                           >
                             <MdPlaylistAdd
                               size={26}
                               className={isLight ? 'save' : 'save save-dark'}
                             />
-                            Save
+                            {isSavedItem ? 'Saved' : 'Save'}
                           </button>
                         </div>
                       </div>
@@ -356,7 +379,7 @@ class VideoItemDetails extends Component {
                     <hr />
                     <div className="channel-info">
                       <img
-                        src={channel.profileImageUrl}
+                        // src={channel.profileImageUrl}
                         alt="channel"
                         className="channel-profile"
                       />
@@ -368,16 +391,13 @@ class VideoItemDetails extends Component {
                               : 'channel-name-vi channel-name-vi-dark'
                           }
                         >
-                          {channel.name}
+                          Channel
                         </p>
-                        <p className="channel-subs-vi">
-                          {channel.subscriberCount} subscribers
-                        </p>
+                        <p className="channel-subs-vi">subscribers</p>
                         <p className="channel-description-vi">{description}</p>
                       </div>
                     </div>
                   </div>
-                  {/* {this.renderResponseVideoData(isLight, onSaveVideos)} */}
                 </div>
               </div>
             </>

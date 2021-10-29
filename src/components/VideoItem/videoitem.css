@@ -5,59 +5,120 @@
 .nav-link-Item {
   text-decoration: none;
 }
-.item-container {
-  list-style: none;
-  width: 300px;
-  height: 350px;
-  margin: 10px 5px;
-}
-.channel-profile {
-  height: 40px;
-  margin-top: 5px;
-  margin-right: 10px;
+
+@media screen and (min-width: 552px) {
+  .item-container {
+    list-style: none;
+    width: 300px;
+    height: 350px;
+    margin: 10px 5px;
+  }
+  .channel-profile-img {
+    height: 40px;
+
+    margin: 5px 5px 0 5px;
+  }
+  .thumbnail-image {
+    width: 300px;
+    height: 170px;
+    margin-bottom: 10px;
+  }
+  .details-channel-container {
+    margin-top: 5px;
+    display: flex;
+  }
+  .views-published-year {
+    display: flex;
+    align-items: center;
+  }
+  .video-title {
+    margin: 5px 0;
+    color: #1e293b;
+    font-size: 14px;
+  }
+  .video-title-dark {
+    color: white;
+  }
+  .channel-name {
+    margin: 5px 0;
+    color: #475569;
+    font-weight: 400;
+  }
+  .dot-icon {
+    margin: 0 5px;
+    color: #475569;
+  }
+  .views-count {
+    color: #475569;
+  }
+  .published-year {
+    color: #475569;
+  }
+
+  .dot-icon-one {
+    display: none;
+  }
 }
 @media screen and (max-width: 552px) {
   .item-container {
     list-style: none;
-    height: 350px;
+    height: 300px;
     margin-bottom: 10px;
+    background-color: white;
+    width: 100%;
+    background-color: transparent;
   }
   .thumbnail-image {
-    height: 180px;
+    /* width: 100%; */
+    width: 100vw;
+    height: 200px;
   }
-}
-.thumbnail-image {
-  width: 300px;
-  height: 170px;
-}
-.details-channel-container {
-  margin-top: 5px;
-  display: flex;
-}
-.views-published-year {
-  display: flex;
-  align-items: center;
-}
-.video-title {
-  margin: 5px 0;
-  color: black;
-  font-size: 14px;
-}
-.video-title-dark {
-  color: white;
-}
-.channel-name {
-  margin: 5px 0;
-  color: #475569;
-  font-weight: 400;
-}
-.dot-icon {
-  margin: 0 5px;
-  color: #475569;
-}
-.views-count {
-  color: #475569;
-}
-.published-year {
-  color: #475569;
+  .item-container-dark {
+    background-color: transparent;
+  }
+  .details-channel-container {
+    margin-top: 15px;
+    display: flex;
+    margin: 0 10px;
+  }
+  .channel-profile-img {
+    height: 30px;
+    margin: 5px 10px 0 10px;
+  }
+  .channel-name-details {
+    display: flex;
+    align-items: center;
+  }
+  .views-published-year {
+    display: flex;
+    align-items: center;
+  }
+  .video-title {
+    margin: 5px 0;
+    color: #1e293b;
+    font-size: 14px;
+    margin-right: 18px;
+  }
+  .video-title-dark {
+    color: white;
+  }
+  .channel-name {
+    margin: 5px 0;
+    color: #475569;
+    font-weight: 400;
+  }
+
+  .dot-icon,
+  .dot-icon-one {
+    margin: 0 5px;
+    color: #475569;
+  }
+  .views-count {
+    margin: 5px 0;
+    color: #475569;
+  }
+  .published-year {
+    margin: 5px 0;
+    color: #475569;
+  }
 }

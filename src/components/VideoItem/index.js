@@ -24,7 +24,11 @@ const VideoItem = props => (
 
       return (
         <Link to={`/videos/${id}`} className="nav-link-Item">
-          <li className="item-container">
+          <li
+            className={
+              isLight ? 'item-container' : 'item-container item-container-dark'
+            }
+          >
             <img
               src={thumbnailUrl}
               alt="thumbnail"
@@ -34,7 +38,7 @@ const VideoItem = props => (
               <img
                 src={profileImageUrl}
                 alt="channel"
-                className="channel-profile"
+                className="channel-profile-img"
               />
               <div>
                 <p
@@ -44,13 +48,16 @@ const VideoItem = props => (
                 >
                   {title}
                 </p>
-                <p className="channel-name">{name}</p>
-                <div className="views-published-year">
-                  <p className="views-count">{viewCount} views </p>
-                  <BsDot size={20} className="dot-icon" />
-                  <p className="published-year">
-                    {presentYear - date} years ago
-                  </p>
+                <div className="channel-name-details">
+                  <p className="channel-name">{name}</p>
+                  <BsDot size={20} className="dot-icon-one" />
+                  <div className="views-published-year">
+                    <p className="views-count">{viewCount} views </p>
+                    <BsDot size={20} className="dot-icon" />
+                    <p className="published-year">
+                      {presentYear - date} years ago
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -45,7 +45,7 @@ const SideBar = () => (
             <Link to="/savedvideos" className="nav-links">
               <li className="navigator-item">
                 <MdPlaylistAdd
-                  size={29}
+                  size={30}
                   className={isLight ? 'icons' : 'icons-dark'}
                 />
                 <p className={isLight ? 'nav-link' : 'nav-link-dark'}>

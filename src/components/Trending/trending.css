@@ -57,6 +57,9 @@
   .heading-trending {
     color: #1b222c;
   }
+  .heading-trending-dark {
+    color: white;
+  }
   .thumbnail-trending {
     height: 250px;
     margin-right: 20px;

@@ -6,5 +6,8 @@
         "videoitem",
         "videoitemdetails",
         "youtubegaming"
+    ],
+    "cSpell.ignoreWords": [
+        "its"
     ]
 }
